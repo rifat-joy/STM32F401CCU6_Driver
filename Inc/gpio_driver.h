@@ -2,7 +2,7 @@
  * gpio_driver.h
  *
  *  Created on: Jan 2, 2023
- *      Author: rifat
+ *      Author: Rifat
  */
 
 #ifndef INC_GPIO_DRIVER_H_
@@ -52,9 +52,9 @@ typedef struct {
 #define Output_mode					1
 #define Alternate_function_mode		2
 #define Analog_mode					3
-#define Int_falling_edge			4
-#define Int_rising_edge				5
-#define Int_rising_falling_edge		6
+#define ext_Int_falling_edge			4
+#define ext_Int_rising_edge				5
+#define ext_Int_rising_falling_edge		6
 
 /*
  * @GPIO_Output_type:
@@ -77,7 +77,7 @@ typedef struct {
 #define High_speed					2
 #define Very_high_speed				3
 
-/* Peripheral clock setup */
+/* GPIOx Peripheral clock setup */
 void GPIO_ClkControl(GPIO_RegDef_t *pGPIOx, uint8_t EnD); 			/* < pointer to the base address, Enable or disable> */
 
 /* Initialization and Deinitialization */
@@ -92,7 +92,8 @@ void GPIO_WritePort(GPIO_RegDef_t *pGPIOx, uint16_t value);
 void GPIO_TogglePin(GPIO_RegDef_t *pGPIOx, uint8_t pinNumber);
 
 /* Interrupt configuration and Handling */
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnD);
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnD);
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority);
 void GPIO_IRQHandling(uint8_t pinNumber);
 
 
